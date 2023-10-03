@@ -48,7 +48,7 @@ jobs:
       # Add or replace any other lints here
       - name: Security audit dependencies
         run: |
-          bundle install bundler-audit
+          gem install bundler-audit
           bundle exec bundler-audit --update
       - name: Security audit application code
         run: bundle exec bin/brakeman -q -w2
