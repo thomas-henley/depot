@@ -49,6 +49,7 @@ jobs:
       - name: Security audit dependencies
         run: |
           gem install bundler-audit
+          bundle add bundler-audit
           bundle exec bundler-audit --update
       - name: Security audit application code
         run: bundle exec bin/brakeman -q -w2
