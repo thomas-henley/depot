@@ -54,6 +54,12 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
 
     respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          :cart,
+          partial: 'layouts/cart'
+        )
+      end
       format.html { redirect_to store_index_url, notice: "Your cart is currently empty." }
       format.json { head :no_content }
     end
